@@ -1,0 +1,10 @@
+<div class="homepage-container">
+  <h1>Welcome to Pinhole Camera Game</h1>
+  <form (ngSubmit)="startGame()">
+    <div class="input-container">
+      <label for="username">Enter Your Name:</label>
+      <input type="text" id="username" name="username" [(ngModel)]="userName" required>
+    </div>
+    <button type="submit">Start Game</button>
+  </form>
+</div>

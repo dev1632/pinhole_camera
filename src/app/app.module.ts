@@ -7,9 +7,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
+import { HomeComponent } from './home/home.component';
+import { Level1Component } from './level1/level1.component';
+import { Level2Component } from './level2/level2.component';
+import { Level3Component } from './level3/level3.component';
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    Level1Component,
+    Level2Component,
+    Level3Component,
+   
   ],
   imports: [
     BrowserModule,

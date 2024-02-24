@@ -1,0 +1,56 @@
+<p>level1 works!</p>
+<body>
+    <div class="btn-group">
+      <img src="../assets/Logo/New ThinkTac Logo (Color).png" alt="Logo" height="60px" width="200px" id="img">
+      <div class="canvas">
+        <canvas id='c'></canvas>
+      </div>
+      <div style="display: flex; justify-content: flex-centre;">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td id="username"> {{ username }} </td>
+            <td><mat-form-field class="example-full-width">
+                <mat-label>Distance 1</mat-label>
+                <input matInput [(ngModel)]="value1">
+              </mat-form-field></td>
+            <td><mat-form-field class="example-full-width">
+                <mat-label>Distance 2</mat-label>
+                <input matInput [(ngModel)]="value2">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-slider step="0.25" min="0.25" max="5" (change)="updateSlider($event)" discrete thumblabel>
+                <input matSliderThumb [(ngModel)]="value">
+              </mat-slider>
+              <h2>Adjust Aperature</h2>
+            </td>
+            <td>
+              <div id="timer">Time - 00:00 </div>
+            </td>
+            <td>
+              <div id="attempts">Attempts - 0 </div>
+            </td>
+          </tr>
+        </table>
+  
+  
+  
+  
+        
+        <table>
+          <tr><button id="apply" (click)="apply()">Apply</button></tr>
+          <tr><button id="reset" (click)="reset()">Reset</button></tr>
+          <tr><button id="next" (click)="next()">Next</button></tr> 
+        </table>
+      </div>
+    </div>
+    <ul id="para">
+      <li> 1. Adjust Distance 1 to get an image of height 10 cm on the image screen.</li>
+      <li> 2. Adjust Distance 2 to get an image of height 10 cm on the image screen.</li>
+      <li> 3. Adjust the distances to get an image of height equal to the object on the image screen.</li>
+      <li> 4. Match the blurred image on the image screen by adjusting the aperture.</li>
+    </ul>
+  
+  </body>
