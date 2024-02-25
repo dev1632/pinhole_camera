@@ -18,11 +18,11 @@
             <td id="username"> {{ username }} </td>
             <td><mat-form-field class="example-full-width">
                 <mat-label>Distance 1</mat-label>
-                <input matInput [(ngModel)]="value1" [disabled] ="isD1Locked">
+                <input matInput [(ngModel)]="value1">
               </mat-form-field></td>
             <td><mat-form-field class="example-full-width">
                 <mat-label>Distance 2</mat-label>
-                <input matInput [(ngModel)]="value2" [disabled] ="isD2Locked">
+                <input matInput [(ngModel)]="value2">
               </mat-form-field>
             </td>
           </tr>
@@ -34,15 +34,10 @@
               <h2>Adjust Aperature</h2>
             </td>
             <td>
-              <div id="timer"> Time -
-
-              <span>{{min}} : </span> 
-              <span>{{sec}}</span>
-                
-              </div>
+              <div id="timer">Time - 00:00 </div>
             </td>
             <td>
-              <div id="attempts">Attempts - {{attempts}} </div>
+              <div id="attempts">Attempts - 0 </div>
             </td>
           </tr>
         </table>
@@ -59,13 +54,8 @@
       <li> 3. Adjust the distances to get an image of height equal to the object on the image screen.</li>
       <li> 4. Match the blurred image on the image screen by adjusting the aperture.</li>
     </ul>
-<<<<<<< HEAD
   </body>
     </div>
 </body>
 
 </html>
-=======
-  
-  </body>
->>>>>>> 8f84104f2566e95e89fa3c31619652f30c9ef994
