@@ -266,28 +266,28 @@ export class Level1Component implements OnInit{
 
     Q2(): void{
       this.attempts = 0;
-      this.isD1Locked = true;
-      this.isD2Locked = false;
       this.resettimer();
       this.start();
       this.value1 = this.getRN();
       this.value2 = null;
       this.hi=this.getRN();
       this.ho = this.getRN();
+      this.isD1Locked = true;
+      this.isD2Locked = false;
       this.ngOnInit();
 
     }
 
     Q3(): void{
       this.attempts = 0;
-      this.isD1Locked = false;
-      this.isD2Locked = false;
       this.resettimer();
       this.start();
       this.value1 = null;
       this.value2 = null;
       this.hi=this.getRN();
       this.ho = this.getRN();
+      this.isD1Locked = false;
+      this.isD2Locked = false;
       this.ngOnInit();
       
 
