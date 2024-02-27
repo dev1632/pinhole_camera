@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+</head>
+<body>
+    <div class="container">
+       <body>
+    <div class="btn-group">
+      <img src="../assets/Logo/New ThinkTac Logo (Color).png" alt="Logo" height="60px" width="200px" id="img">
+      <div class="canvas">
+        <canvas id='c'></canvas>
+      </div>
+      <div style="display: flex; justify-content: flex-centre;">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td id="username"> {{ username }} </td>
+            
+           </tr>
+          <tr>
+            <td>
+              <mat-slider step="0.25" min="0.25" max="5" (change)="updateSlider($event)" discrete thumblabel>
+                <input matSliderThumb [(ngModel)]="value">
+              </mat-slider>
+              <h2>Adjust Aperature</h2>
+            </td>
+            <!--<td>
+              <button id="adjustHolePositionBtn" (click)="adjustHolePosition()">Hole Position</button>
+              <button id="addAHoleBtn" (click)="addAHole(5)">Add a Hole</button>
+              
+          </td>-->
+            <td>
+              <div id="timer">Time - 00:00 </div>
+            </td>
+            <td>
+              <div id="attempts">Attempts - 0 </div>
+            </td>
+          </tr>
+        </table>
+        <table>
+          <tr><button id="apply" (click)="apply()">Apply</button></tr>
+          <tr><button id="reset" (click)="reset()">Reset</button></tr>
+          <tr><button id="next" (click)="next()">Next</button></tr> 
+        </table>
+      </div>
+      <!-- New buttons for Hole Position and Add a Hole -->
+<div style="display: flex; justify-content: flex-centre; margin-top: 10px;">
+  <button id="adjustHolePositionBtn" (click)="adjustHolePosition()">Hole Position</button>
+  <button id="addAHoleBtn" (click)="addAHole(5)">Add a Hole</button>
+</div>
+    </div>
+    <ul id="para">
+      <li> 5. Select the correct image on the screen formed from the following options .</li>
+      <li> 6. Adjust the hole position to match the image on the screen.</li>
+      <li> 7. Adjust the hole position and increase the number of holes to match the images on the screen.</li>
+      <li> 8. Adjust the respective hole size to match the image on the screen.</li>
+    </ul>
+  </body>
+    </div>
+</body>
+
+</html>
