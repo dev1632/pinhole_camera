@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { fabric } from 'fabric';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-level1',
@@ -59,7 +60,7 @@ export class Level1Component implements OnInit{
 
     
     // canvas: any;
-    constructor(private route: ActivatedRoute, private router: Router) {
+    constructor(private router: Router) {
       this.imgSlideDistance=220;
       this.objSlideDistance=220;
       this.appertureWidth=.25;
@@ -238,12 +239,11 @@ export class Level1Component implements OnInit{
     this.canvas.add(img);
   });
 
-  this.route.queryParams.subscribe(params => {
-    this.username = params['username'];
-  });
+  // this.route.queryParams.subscribe(params => {
+  //   this.username = params['username'];
+  // });
 
-
-
+  
 
 
 
@@ -256,7 +256,10 @@ export class Level1Component implements OnInit{
     }
     // here on init ends
 
-
+    navigateToLevel2(): void {
+      this.router.navigate(['/level2']);
+    }
+  
 
 
 
