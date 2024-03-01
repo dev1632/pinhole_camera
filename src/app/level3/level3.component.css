@@ -1,0 +1,164 @@
+
+.button{
+    background-color:#4caf50;
+    border:none;color:#fff;
+    padding:15px 32px;
+    text-align:center;
+    text-decoration:none;
+    display:inline-block;
+    font-size:20px;
+  }
+  .btn-group{
+    background-color: #f5dff7; 
+    border: 1px solid rgb(133, 110, 9); 
+    color: white; 
+    padding: 5px 5px; 
+    cursor: pointer; 
+    display:inline-block;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  html {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+   padding: 1em; 
+  } 
+  
+  @media screen and (max-width: 500px) {
+  html {
+      height: 90vh;
+      width:fit-content;
+  }
+  .mat-typography{
+      width: fit-content;
+  }
+  } 
+  
+  form{
+    display: flex;
+    
+  }
+  label{
+    color: white;
+  }
+  
+  #uname{
+    margin-left: 10px;
+    padding-top: 7px;
+    padding-left: 5px;
+    box-align: center;
+    background-color: #2f75b7;
+    width: 180px;
+    height: 30px;
+    text-align: center;
+  }
+  #username{
+    background: rgba(255,255,255,0);
+    border: none;
+  
+  }
+  
+  #timer{
+    margin-top: 150px;
+    margin-left: 5px;
+    padding-top: 7px;
+    padding-left: 5px;
+    background-color: #01b0f1;
+    width: 280px;
+    height: 30px;
+    color: white;
+    text-align: center;
+  }
+  /* #username{
+    scale(x): ;
+    margin-bottom: 10px;
+    
+    background-color: #536d97;
+    width: 120px;
+    height: 30%;
+    color: white;
+    text-align: center;
+    font-size: large;
+  } */
+  #attempts{
+    margin-top: 150px;
+    margin-left: 15px;
+    padding-top: 7px;
+    padding-left: 5px;
+    background-color: #01b0f1;
+    width: 280px;
+    height: 30px;
+    color: white;
+    text-align: center;
+  
+  }
+
+  #counter{
+    display: flex;
+  }
+  
+  input::placeholder{
+    color: white;
+  }
+  
+  input[type="number"]{
+    color: white;
+  }
+  
+  #submit{
+    display: flexbox;
+    margin-left: 314px;  }
+  
+  
+  #apply{
+    
+    margin-top: 150px;
+    margin-left: 120px;
+    padding-top: 7px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    background-color: #c55b10;
+    width: 80px;
+    height: 35px;
+    color: white;
+    
+  
+  }
+  
+  
+  #reset{
+    margin-top: 12px;
+    margin-left: 120px;
+    padding-top: 7px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    background-color: #c00101;
+    width: 80px;
+    height: 35px;
+    color: white;
+    /* padding: center; */
+  
+  }
+  
+  
+  #next{
+    margin-top: 12px;
+    margin-left:120px;
+    padding-top: 7px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    background-color: #002161;
+    width: 80px;
+    height: 35px;
+    color: white;
+  
+  }
+  
+  h2{
+    color: rgb(255, 45, 45);
+  }
+  

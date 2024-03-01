@@ -1,1 +1,55 @@
 <p>level3 works!</p>
+<body>
+    <div class="btn-group">
+      <img src="../assets/Logo/New ThinkTac Logo (Color).png" alt="Logo" height="60px" width="200px" id="img">
+      <div class="canvas">
+        <app-ai-board id="ai-board-id" ></app-ai-board>
+        <canvas id='c'></canvas>
+      </div>
+      <div style="display: flex; justify-content: flex-centre;">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td id="username"> {{ username }} </td>
+            
+          </tr>
+          <tr>
+            <td>
+              <div id="timer"> Time -
+
+              <span>{{min}} : </span> 
+              <span>{{sec}}</span>
+                
+              </div>
+            </td>
+            <td>
+              <div id="attempts">Attempts - {{attempts}} </div>
+            </td>
+          </tr>
+        </table>
+
+  
+  
+  
+  
+        
+        <table>
+          <tr><button id="apply" (click)="apply()" >Apply</button></tr>
+          <tr><button id="reset" (click)="reset()">Retry</button></tr>
+          <tr><button id="next" (click)="next()">Next</button></tr> 
+        </table>
+
+
+      </div>
+    </div>
+    <ul id="para">
+      <li> Play tic tac toe game against computer (x) , using the pinhole camera working principle .</li>
+      <li> Start the game for the computer to enter its input .Then select a respective square to create the object 
+        in the <br><b>"Object Screen"</b> to enter your input in the image screen.    </li>
+      <li> Position of the pinhole is fixed here.</li>
+    </ul>
+
+    
+  
+    
+
+  </body>
