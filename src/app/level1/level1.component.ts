@@ -11,6 +11,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class Level1Component implements OnInit{
   title = 'Box-pinhole-game';
   username: string = '';
+  Que_one: boolean = true;
+  Que_two: boolean = false;
+  Que_three: boolean = false;
 
     ms: any ='0'+ 0;
     sec: any ='0' +0;
@@ -65,13 +68,18 @@ export class Level1Component implements OnInit{
       this.appertureWidth=.25;
       this.Qcount =1;
       this.attempts = 0;
+      this.value2 = this.getRN();
       this.hi=this.getRN();
       this.ho = this.getRN();
-      this.value2 = this.getRN();
-      this.start();
+      this.start(); //starts timer
     }
 
+
+
     ngOnInit(): void {
+      
+      
+
       this.canvas = new fabric.Canvas('c', {
         width: 800,
         height: 400,
@@ -114,6 +122,7 @@ export class Level1Component implements OnInit{
           this.ans = this.calculateD1();
         }
         if(this.Qcount===2){
+          console.log(this.temp);
           this.ans = this.calculateD2();
         }
 
@@ -274,6 +283,8 @@ export class Level1Component implements OnInit{
       this.value2 = null;
       this.hi=this.getRN();
       this.ho = this.getRN();
+      this.Que_one = false;
+      this.Que_two = true;
       this.ngOnInit();
 
     }
@@ -288,6 +299,8 @@ export class Level1Component implements OnInit{
       this.value2 = null;
       this.hi=this.getRN();
       this.ho = this.getRN();
+      this.Que_two=false;
+      this.Que_three =true;
       this.ngOnInit();
       
 
@@ -336,12 +349,38 @@ export class Level1Component implements OnInit{
 
     calculateD1(): any{
       this.temp = (this.value2*this.hi)/this.ho;
-       return this.temp.toFixed(2);
+      this.temp = this.temp.toFixed(2);
+       return this.temp;
     }
     calculateD2(): any{
       this.temp = (this.value1*this.ho)/this.hi;
-      console.log(this.temp);
-       return this.temp.toFixed(2);
+      this.temp = this.temp.toFixed(2);
+       return this.temp;
+    }
+    
+
+    checkans(): any{
+      if(this.Qcount === 1){
+        if(this.value1=== this.temp){
+        
+          console.log("success");
+        }
+        else{
+          console.log("try again");
+        }
+
+      }
+      if(this.Qcount === 2){
+        if(this.value2=== this.temp){
+        
+          console.log("success");
+        }
+        else{
+          console.log("try again");
+        }
+
+      }
+      
     }
 
     
@@ -461,6 +500,8 @@ export class Level1Component implements OnInit{
         console.log("onDecreasingDistance2");
       }
     }
+
+
     apply(){
       this.attempts++;
       this.onIncreasingDistance1();
@@ -468,6 +509,8 @@ export class Level1Component implements OnInit{
       this.onIncreasingDistance2();
       this.onDecreasingDistance2();
       this.canvas.remove(this.text2,this.text3);
+      this.checkans();
+
       
       // this.calculateDistance1();
       // this.calculateDistance2();

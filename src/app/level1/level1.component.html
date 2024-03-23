@@ -51,11 +51,19 @@
         </table>
       </div>
     </div>
-    <ul id="para">
-      <li> 1. Adjust Distance 1 to get an image of height 10 cm on the image screen.</li>
-      <li> 2. Adjust Distance 2 to get an image of height 10 cm on the image screen.</li>
-      <li> 3. Adjust the distances to get an image of height equal to the object on the image screen.</li>
-      <li> 4. Match the blurred image on the image screen by adjusting the aperture.</li>
-    </ul>
+
+    <div>
+    <div class="info_box" [ngClass]="Que_one ? 'activeInfo':''">
+      <div class="info">1. Adjust Distance 1 to get an image of height 10 cm on the image screen.</div>
+    </div>
+    <div class="info_box" [ngClass]="Que_two ? 'activeInfo':''">
+      <div class="info">2. Adjust Distance 2 to get an image of height 10 cm on the image screen.</div>
+    </div>
+    <div class="info_box" [ngClass]="Que_three ? 'activeInfo':''">
+      <div class="info">3. Adjust the distances to get an image of height equal to the object on the image screen.</div>
+    </div>
+
+    </div>
+
   
   </body>
