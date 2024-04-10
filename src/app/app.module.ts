@@ -13,6 +13,9 @@ import { Level2Component } from './level2/level2.component';
 import { Level3Component } from './level3/level3.component';
 import { AiBoardComponent } from './level3/ai-board/ai-board.component';
 import { CellComponent } from './level3/cell/cell.component';
+import { Level1Part1Component } from './level1-part1/level1-part1.component';
+import { Level1Part2Component } from './level1-part2/level1-part2.component';
+import { Level2Part1Component } from './level2-part1/level2-part1.component';
 
 
 @NgModule({
@@ -24,6 +27,9 @@ import { CellComponent } from './level3/cell/cell.component';
     Level3Component,
     AiBoardComponent,
     CellComponent,
+    Level1Part1Component,
+    Level1Part2Component,
+    Level2Part1Component,
     
    
   ],
