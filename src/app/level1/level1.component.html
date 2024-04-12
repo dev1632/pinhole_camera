@@ -1,5 +1,8 @@
-<p>level1 works!</p>
+
 <body>
+  <div class="whole">
+
+
     <div class="btn-group">
       <img src="../assets/Logo/New ThinkTac Logo (Color).png" alt="Logo" height="60px" width="200px" id="img">
       <div class="canvas">
@@ -52,18 +55,13 @@
       </div>
     </div>
 
-    <div>
-    <div class="info_box" [ngClass]="Que_one ? 'activeInfo':''">
+    
+    <div class="info_box" [ngClass]="Que ? 'activeInfo':''">
       <div class="info">1. Adjust Distance 1 to get an image of height 10 cm on the image screen.</div>
     </div>
-    <div class="info_box" [ngClass]="Que_two ? 'activeInfo':''">
-      <div class="info">2. Adjust Distance 2 to get an image of height 10 cm on the image screen.</div>
-    </div>
-    <div class="info_box" [ngClass]="Que_three ? 'activeInfo':''">
-      <div class="info">3. Adjust the distances to get an image of height equal to the object on the image screen.</div>
-    </div>
 
-    </div>
+
+  </div>
 
   
   </body>

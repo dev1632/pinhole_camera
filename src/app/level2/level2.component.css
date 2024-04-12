@@ -1,4 +1,14 @@
 
+body{
+  background-image: url("https://i.pinimg.com/originals/4b/2a/b5/4b2ab5f41b383533644a9d0f49a0afc8.gif");
+  background-size: cover;
+  
+  height: 100%;
+  padding:0;
+  margin:0;
+} 
+
+
 .button{
   background-color:#4caf50;
   border:none;color:#fff;

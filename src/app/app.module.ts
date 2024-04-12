@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSnackBarModule} from '@angular/material/snack-bar'; 
 import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,11 +32,13 @@ import { Level2Part1Component } from './level2-part1/level2-part1.component';
     Level1Part2Component,
     Level2Part1Component,
     
+    
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
     FormsModule, MatFormFieldModule, MatInputModule, MatSliderModule
   ],

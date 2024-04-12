@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { fabric } from 'fabric';
 import { ActivatedRoute, Router } from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import * as confetti from 'canvas-confetti';
+
+
 
 @Component({
   selector: 'app-level1',
@@ -11,9 +15,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class Level1Component implements OnInit{
   title = 'Box-pinhole-game';
   username: string = '';
-  Que_one: boolean = true;
-  Que_two: boolean = false;
-  Que_three: boolean = false;
+  Que: boolean = true;
+  
 
     ms: any ='0'+ 0;
     sec: any ='0' +0;
@@ -23,8 +26,9 @@ export class Level1Component implements OnInit{
     attempts: any;
     isD1Locked: boolean = false;
     isD2Locked: boolean = true;
-    Qcount: any;
+    
     ans: any;
+    flag: number=0;
     
   
     value: any;
@@ -62,11 +66,10 @@ export class Level1Component implements OnInit{
 
     
     // canvas: any;
-    constructor(private route: ActivatedRoute, private router: Router) {
+    constructor(private route: ActivatedRoute, private router: Router,private _snackBar: MatSnackBar) {
       this.imgSlideDistance=220;
       this.objSlideDistance=220;
       this.appertureWidth=.25;
-      this.Qcount =1;
       this.attempts = 0;
       this.value2 = this.getRN();
       this.hi=this.getRN();
@@ -118,13 +121,9 @@ export class Level1Component implements OnInit{
         this.canvas.add(this.text8);
 
 
-        if(this.Qcount===1){
+        
           this.ans = this.calculateD1();
-        }
-        if(this.Qcount===2){
-          console.log(this.temp);
-          this.ans = this.calculateD2();
-        }
+        
 
         this.text9 = new fabric.Text('Ans - '+ this.ans +' cm ', {fontSize: 15,
           left: 350,
@@ -251,6 +250,13 @@ export class Level1Component implements OnInit{
     this.username = params['username'];
   });
 
+  if (!localStorage.getItem('foo')) { 
+    localStorage.setItem('foo', 'no reload') 
+    location.reload() 
+  } else {
+    localStorage.removeItem('foo') 
+  }
+
 
 
 
@@ -266,6 +272,8 @@ export class Level1Component implements OnInit{
     // here on init ends
 
 
+   
+
 
 
 
@@ -273,38 +281,22 @@ export class Level1Component implements OnInit{
     // onInit is Q1
 
 
-    Q2(): void{
-      this.attempts = 0;
-      this.isD1Locked = true;
-      this.isD2Locked = false;
-      this.resettimer();
-      this.start();
-      this.value1 = this.getRN();
-      this.value2 = null;
-      this.hi=this.getRN();
-      this.ho = this.getRN();
-      this.Que_one = false;
-      this.Que_two = true;
-      this.ngOnInit();
-
-    }
-
-    Q3(): void{
-      this.attempts = 0;
-      this.isD1Locked = false;
-      this.isD2Locked = false;
-      this.resettimer();
-      this.start();
-      this.value1 = null;
-      this.value2 = null;
-      this.hi=this.getRN();
-      this.ho = this.getRN();
-      this.Que_two=false;
-      this.Que_three =true;
-      this.ngOnInit();
+    // Q3(): void{
+    //   this.attempts = 0;
+    //   this.isD1Locked = false;
+    //   this.isD2Locked = false;
+    //   this.resettimer();
+    //   this.start();
+    //   this.value1 = null;
+    //   this.value2 = null;
+    //   this.hi=this.getRN();
+    //   this.ho = this.getRN();
+    //   this.Que_two=false;
+    //   this.Que_three =true;
+    //   this.ngOnInit();
       
 
-    }
+    // }
 
     start(): void{
       if(this.running){
@@ -352,34 +344,50 @@ export class Level1Component implements OnInit{
       this.temp = this.temp.toFixed(2);
        return this.temp;
     }
-    calculateD2(): any{
-      this.temp = (this.value1*this.ho)/this.hi;
-      this.temp = this.temp.toFixed(2);
-       return this.temp;
+    // calculateD2(): any{
+    //   this.temp = (this.value1*this.ho)/this.hi;
+    //   this.temp = this.temp.toFixed(2);
+    //    return this.temp;
+    // }
+
+    openSnackBar(message: string, action: string) {
+      this._snackBar.open(message, action, {
+        duration: 4500,
+      });
     }
+
     
 
+    
+    
+    
+
+
+
     checkans(): any{
-      if(this.Qcount === 1){
+      
         if(this.value1=== this.temp){
         
           console.log("success");
+          this.attempts++;
+          this.flag=1;
+          this.onIncreasingDistance1();
+      this.onDecreasingDistance1();
+      this.onIncreasingDistance2();
+      this.onDecreasingDistance2();
+      this.canvas.remove(this.text2,this.text3);
+      this.openSnackBar("Maa Chuda","Lavde");
+      
+  
+          
         }
         else{
           console.log("try again");
+          this.attempts++;
+          this.openSnackBar("Wrong Answer","Try Again");
+          
+         
         }
-
-      }
-      if(this.Qcount === 2){
-        if(this.value2=== this.temp){
-        
-          console.log("success");
-        }
-        else{
-          console.log("try again");
-        }
-
-      }
       
     }
 
@@ -395,10 +403,6 @@ export class Level1Component implements OnInit{
       this.imgSlideDistance=this.value1*20;
     }
 
-    calculateDistance2(): void{
-      console.log("Distance 2 entered: ",this.value2);
-      this.objSlideDistance=this.value2*20;
-    }
 
     onIncreasingDistance1(){
       if(this.value1*20>=this.imgSlideDistance*1){
@@ -501,15 +505,15 @@ export class Level1Component implements OnInit{
       }
     }
 
-
     apply(){
-      this.attempts++;
-      this.onIncreasingDistance1();
-      this.onDecreasingDistance1();
-      this.onIncreasingDistance2();
-      this.onDecreasingDistance2();
-      this.canvas.remove(this.text2,this.text3);
-      this.checkans();
+      if(this.flag===0){
+        this.checkans();
+      }
+      if(this.flag===1){
+
+        this.openSnackBar("Next Question Pe Jaa Na","Lavde");
+
+      }
 
       
       // this.calculateDistance1();
@@ -520,18 +524,9 @@ export class Level1Component implements OnInit{
     }
     next(){
 
-      if(this.Qcount===3){
-        this.router.navigate(['/level1/level2'], { queryParams: { username: this.username }});
-      }
-
-      if(this.Qcount===2){
-        this.Q3();
-        this.Qcount++;
-      }
-      if(this.Qcount===1){
-        this.Q2();
-        this.Qcount++;
-      }
+    
+        this.router.navigate(['/level1-part1'], { queryParams: { username: this.username }});
+      
       
       
   

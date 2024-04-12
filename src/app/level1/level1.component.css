@@ -1,5 +1,12 @@
 
-
+body{
+  background-image: url("https://i.pinimg.com/originals/4b/2a/b5/4b2ab5f41b383533644a9d0f49a0afc8.gif");
+  background-size: cover;
+  
+  height: 100%;
+  padding:0;
+  margin:0;
+} 
 
 .button{
     background-color:#4caf50;
@@ -232,6 +239,11 @@
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
 }
 
 .info_box .info-title{
@@ -280,4 +292,13 @@
   border-radius: 5px;
   border: 1px solid #007bff;
   transition: all 0.3s ease;
+}
+
+.whole{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding-top: 50px
 }
