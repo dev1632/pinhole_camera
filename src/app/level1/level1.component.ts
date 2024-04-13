@@ -370,13 +370,14 @@ export class Level1Component implements OnInit{
         
           console.log("success");
           this.attempts++;
-          this.flag=1;
+         
           this.onIncreasingDistance1();
       this.onDecreasingDistance1();
       this.onIncreasingDistance2();
       this.onDecreasingDistance2();
       this.canvas.remove(this.text2,this.text3);
       this.openSnackBar("Your Answer is ","Correct");
+      this.flag=1;
       
   
           
@@ -510,8 +511,6 @@ export class Level1Component implements OnInit{
         this.checkans();
       }
       if(this.flag===1){
-
-        this.openSnackBar("Head over to","Next Question");
 
       }
 

@@ -28,6 +28,7 @@ export class Level1Part1Component {
     isD2Locked: boolean = false;
     Qcount: any;
     ans: any;
+    flag: number=0;
     
   
     value: any;
@@ -345,17 +346,24 @@ export class Level1Part1Component {
       if(this.value2=== this.temp){
       
         console.log("success");
+        this.attempts++;
+       
         this.onIncreasingDistance1();
     this.onDecreasingDistance1();
     this.onIncreasingDistance2();
     this.onDecreasingDistance2();
     this.canvas.remove(this.text2,this.text3);
-    this.openSnackBar("Maa Chuda","Lavde");
+    this.openSnackBar("Your Answer is ","Correct");
+    this.flag=1;
+    
+
         
       }
       else{
         console.log("try again");
+        this.attempts++;
         this.openSnackBar("Wrong Answer","Try Again");
+        
        
       }
     
@@ -475,9 +483,12 @@ export class Level1Part1Component {
 
 
     apply(){
-      this.attempts++;
-      this.checkans();
+      if(this.flag===0){
+        this.checkans();
+      }
+      if(this.flag===1){
 
+      }
       
       // this.calculateDistance1();
       // this.calculateDistance2();
