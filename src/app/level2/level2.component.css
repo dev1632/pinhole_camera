@@ -9,6 +9,16 @@ body{
 } 
 
 
+.info_box{
+    position: absolute;
+    top: 750px;
+    left: 300px;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
 .button{
   background-color:#4caf50;
   border:none;color:#fff;
@@ -209,4 +219,13 @@ input[type="number"]{
 
 h2{
   color: rgb(255, 45, 45);
+}
+
+.whole{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding-top: 50px
 }

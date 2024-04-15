@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { fabric } from 'fabric';
 import { ActivatedRoute, Router } from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar'; 
+
 
 @Component({
   selector: 'app-level2',
@@ -20,13 +22,17 @@ export class Level2Component implements OnInit{
     attempts: any;
     Qcount: any;
     ans: any;
+    flag: number=0;
     
   
     value: any;
+    img_no : any;
+    img_ans : any;
     A : any;
     B : any;
     C : any;
     D : any;
+    Rand_img : any;
     prefix: any;
     imgSlideDistance: number;
     objSlideDistance: number;
@@ -37,6 +43,7 @@ export class Level2Component implements OnInit{
     pinhole_screen: any;
     arrow: any;
     obj_screen: any;
+    options : any;
     
     text1: any;
     text2: any;
@@ -57,13 +64,12 @@ export class Level2Component implements OnInit{
 
     
     // canvas: any;
-    constructor(private route: ActivatedRoute, private router: Router) {
+    constructor(private route: ActivatedRoute, private router: Router,private _snackBar: MatSnackBar) {
       this.imgSlideDistance=220;
       this.objSlideDistance=220;
       this.appertureWidth=.25;
       this.Qcount =1;
       this.attempts = 0;
-      this.prefix ="../assets/logo/arrow.png"
       this.start(); //starts timer
     }
 
@@ -199,15 +205,21 @@ export class Level2Component implements OnInit{
       // });
       // this.canvas.add(this.arrow);
   
-      const imageUrl = this.select_image();
+   this.A = '../assets/Logo/Arrow_A-removebg-preview.png';
+   this.B = '../assets/Logo/Arrow_B-removebg-preview.png';
+   this.C = '../assets/Logo/Arrow_C-removebg-preview.png';
+   this.D = '../assets/Logo/Arrow_D-removebg-preview.png';
+
+   
+   this.Rand_img=this.select_image();
   
-  fabric.Image.fromURL(imageUrl, (img) => {
+  fabric.Image.fromURL(this.Rand_img, (img) => {
     img.set({
-      left: 595,
-      top: 170,
+      left: 589,
+      top: 160,
       selectable:!1,hasControls:!1,
-      scaleX: 0.045, 
-      scaleY: 0.045
+      scaleX: 0.165, 
+      scaleY: 0.165
     });
     this.canvas.add(img);
   });
@@ -241,10 +253,25 @@ export class Level2Component implements OnInit{
 
     select_image(): string{
 
-      this.A = "arrow.png"
+      this.img_no = Math.floor(Math.random() * 4) + 1;
 
-      return this.prefix+this.A;
+      if(this.img_no === 1){
+        return this.A;
+      }
 
+      if(this.img_no === 2){
+        return this.B;
+      }
+
+      if(this.img_no === 3){
+        return this.C;
+      }
+
+      if(this.img_no === 4){
+        return this.D;
+      }
+
+      return "NULL";
 
     }
 
@@ -302,46 +329,86 @@ export class Level2Component implements OnInit{
       this.min = this.sec = this.ms = '0' +0;
     }
 
-    
 
+    img_check(): void{
 
-    
-
-    
-
-
-
-
-    
-
-
-
-    apply(){
-      this.attempts++;      
-      // this.calculateDistance1();
-      // this.calculateDistance2();
+      if(this.img_no===1){
+        this.img_ans=4;
+      }
+      if(this.img_no===2){
+        this.img_ans=3;
+      }
+      if(this.img_no===3){
+        this.img_ans=2;
+      }
+      if(this.img_no===4){
+        this.img_ans=1;
+      }
     }
-    reset(){
-  
+
+
+    openSnackBar(message: string, action: string) {
+      this._snackBar.open(message, action, {
+        duration: 4500,
+      });
     }
-    next(){
 
-      if(this.Qcount===3){
-        this.router.navigate(['/level1/level2/level3'], { queryParams: { username: this.username }});
-      }
-
-      if(this.Qcount===2){
-        this.Q3();
-        this.Qcount++;
-      }
-      if(this.Qcount===1){
-        this.Q2();
-        this.Qcount++;
-      }
+    checkans(): any{
       
+      if(this.img_no=== this.img_ans){
       
-  
+        console.log("success");
+        this.attempts++;
+    this.openSnackBar("Your Answer is ","Correct");
+    this.flag=1;
+    
+
+        
+      }
+      else{
+        console.log("try again");
+        this.attempts++;
+        this.openSnackBar("Wrong Answer","Try Again");
+        
+       
+      }
+    
+  }
+
+    
+
+
+    
+
+    
+
+
+
+
+    
+
+
+
+  apply(){
+    if(this.flag===0){
+      this.checkans();
     }
+    if(this.flag===1){
+
+    }
+    
+    // this.calculateDistance1();
+    // this.calculateDistance2();
+  }
+  reset(){
+
+  }
+  next(){
+
+      this.router.navigate(['/level1/level2'], { queryParams: { username: this.username }});
+    
+
+  }
 
     updateSlider(event: any){
       console.log("got into slider: ",this.value);
