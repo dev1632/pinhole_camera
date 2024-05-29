@@ -19,6 +19,19 @@ username: string = '';
   starttimer: any;
   running = true;
   attempts: any;
+  level3Attempts : number;
+  level3time : number;
+  timecounter: number;
+
+  level2Attempts: number =0;
+    
+    level2time: number =0;
+    level1part1Attempts: number =0;
+    level1part1time:number =0;
+    level1Attempts: number=0;
+    level1time: number=0;
+
+
   // temp: any;
   canvas: any;
   img_line: any;
@@ -55,6 +68,9 @@ username: string = '';
   constructor(private route: ActivatedRoute, private router: Router) {
 
     this.appertureWidth=.25;
+    this.timecounter=0;
+    this.level3Attempts=0;
+    this.level3time=0;
   
     this.attempts = 0;
  
@@ -254,6 +270,12 @@ username: string = '';
 
 this.route.queryParams.subscribe(params => {
   this.username = params['username'];
+  this.level1Attempts = +params['level1Attempts'] || 0;
+      this.level1time = +params['level1time'] || 0;
+      this.level1part1Attempts = +params['level1part1Attempts'] || 0;
+      this.level1part1time = +params['level1part1time'] || 0;
+      this.level2Attempts = +params['level2Attempts'] || 0;
+      this.level2time = +params['level2time'] || 0;
 });
   }
 
@@ -286,6 +308,8 @@ this.route.queryParams.subscribe(params => {
 
         if(this.ms ===100){
           this.sec++;
+          this.timecounter++;
+
           this.sec = this.sec < 10 ? '0' + this.sec : this.sec;
           this.ms = '0' +0;
         }
@@ -319,19 +343,20 @@ this.route.queryParams.subscribe(params => {
 
   }
   next(){
+    this.level3time =this.timecounter;
+    this.level3Attempts = this.attempts;
 
-    if(this.Qcount===3){
-      this.router.navigate(['/level1/level2/level3'], { queryParams: { username: this.username }});
-    }
-
-    if(this.Qcount===2){
-      this.Q3();
-      this.Qcount++;
-    }
-    if(this.Qcount===1){
-      this.Q2();
-      this.Qcount++;
-    }
+    this.router.navigate(['results'], { queryParams: { username: this.username,
+      level1Attempts: this.level1Attempts,
+          level1time: this.level1time,
+          level1part1Attempts: this.level1part1Attempts,
+          level1part1time: this.level1part1time,
+          level2Attempts: this.level2Attempts,
+          level2time: this.level2time,
+          level3Attempts: this.level3Attempts,
+          level3time: this.level3time
+          
+     }});
     
     
 

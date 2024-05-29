@@ -8,6 +8,8 @@ import { Level3Component } from './level3/level3.component';
 import { Level1Part1Component } from './level1-part1/level1-part1.component';
 import { Level1Part2Component } from './level1-part2/level1-part2.component';
 import { Level2Part1Component } from './level2-part1/level2-part1.component';
+import { ResultsComponent } from './results/results.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,6 +19,7 @@ const routes: Routes = [
   { path: 'level1-part1', component: Level1Part1Component },
   { path: 'level1-part2', component: Level1Part2Component },
   { path: 'level2-part1', component: Level2Part1Component },
+  { path: 'results', component: ResultsComponent },
   
   
 ];

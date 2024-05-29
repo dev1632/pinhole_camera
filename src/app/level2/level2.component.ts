@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { fabric } from 'fabric';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar'; 
+
+
 
 
 @Component({
@@ -9,6 +14,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   templateUrl: './level2.component.html',
   styleUrls: ['./level2.component.css']
 })
+
+
 
 export class Level2Component implements OnInit{
   title = 'Box-pinhole-game';
@@ -23,6 +30,14 @@ export class Level2Component implements OnInit{
     Qcount: any;
     ans: any;
     flag: number=0;
+    optionsForm: FormGroup;
+    level2Attempts: number;
+    timecounter: number;
+    level2time: number;
+    level1part1Attempts: number =0;
+    level1part1time:number =0;
+    level1Attempts: number=0;
+    level1time: number=0;
     
   
     value: any;
@@ -64,13 +79,20 @@ export class Level2Component implements OnInit{
 
     
     // canvas: any;
-    constructor(private route: ActivatedRoute, private router: Router,private _snackBar: MatSnackBar) {
+    constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router,private _snackBar: MatSnackBar) {
       this.imgSlideDistance=220;
       this.objSlideDistance=220;
       this.appertureWidth=.25;
       this.Qcount =1;
+      this.img_ans="0";
       this.attempts = 0;
+      this.level2Attempts =0;
+      this.level2time =0;
+      this.timecounter=0;
       this.start(); //starts timer
+      this.optionsForm = this.fb.group({
+        selectedOption: ['']
+      });
     }
 
 
@@ -226,7 +248,18 @@ export class Level2Component implements OnInit{
 
   this.route.queryParams.subscribe(params => {
     this.username = params['username'];
+    this.level1Attempts = +params['level1Attempts'];
+      this.level1time = +params['level1time'];
+      this.level1part1Attempts = +params['level1part1Attempts'];
+      this.level1part1time = +params['level1part1time'];
   });
+
+  if (!localStorage.getItem('foo')) { 
+    localStorage.setItem('foo', 'no reload') 
+    location.reload() 
+  } else {
+    localStorage.removeItem('foo') 
+  }
 
 
 
@@ -256,20 +289,25 @@ export class Level2Component implements OnInit{
       this.img_no = Math.floor(Math.random() * 4) + 1;
 
       if(this.img_no === 1){
+        this.img_ans="4";
         return this.A;
       }
 
       if(this.img_no === 2){
+        this.img_ans="3";
         return this.B;
       }
 
       if(this.img_no === 3){
+        this.img_ans="2";
         return this.C;
       }
 
       if(this.img_no === 4){
+        this.img_ans="1";
         return this.D;
       }
+      
 
       return "NULL";
 
@@ -302,6 +340,7 @@ export class Level2Component implements OnInit{
 
           if(this.ms ===100){
             this.sec++;
+            this.timecounter++;
             this.sec = this.sec < 10 ? '0' + this.sec : this.sec;
             this.ms = '0' +0;
           }
@@ -330,21 +369,21 @@ export class Level2Component implements OnInit{
     }
 
 
-    img_check(): void{
+    // img_check(): void{
 
-      if(this.img_no===1){
-        this.img_ans=4;
-      }
-      if(this.img_no===2){
-        this.img_ans=3;
-      }
-      if(this.img_no===3){
-        this.img_ans=2;
-      }
-      if(this.img_no===4){
-        this.img_ans=1;
-      }
-    }
+    //   if(this.img_no===1){
+    //     this.img_ans=4;
+    //   }
+    //   if(this.img_no===2){
+    //     this.img_ans=3;
+    //   }
+    //   if(this.img_no===3){
+    //     this.img_ans=2;
+    //   }
+    //   if(this.img_no===4){
+    //     this.img_ans=1;
+    //   }
+    // }
 
 
     openSnackBar(message: string, action: string) {
@@ -354,13 +393,19 @@ export class Level2Component implements OnInit{
     }
 
     checkans(): any{
+      const selectedOption = this.optionsForm.get('selectedOption')?.value;
+      console.log("selectedOption:",selectedOption)
+      console.log("img_ans:",this.img_ans)
       
-      if(this.img_no=== this.img_ans){
+      
+      if(selectedOption=== this.img_ans){
       
         console.log("success");
         this.attempts++;
     this.openSnackBar("Your Answer is ","Correct");
     this.flag=1;
+    this.level2Attempts = this.attempts;
+    this.level2time = this.timecounter;
     
 
         
@@ -405,7 +450,14 @@ export class Level2Component implements OnInit{
   }
   next(){
 
-      this.router.navigate(['/level1/level2'], { queryParams: { username: this.username }});
+      this.router.navigate(['level1/level2/level3'], { queryParams: { username: this.username,
+        level1Attempts: this.level1Attempts,
+          level1time: this.level1time,
+          level1part1Attempts: this.level1part1Attempts,
+          level1part1time: this.level1part1time,
+          level2Attempts: this.level2Attempts,
+          level2time: this.level2time,
+       }});
     
 
   }

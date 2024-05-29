@@ -4,6 +4,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSnackBarModule} from '@angular/material/snack-bar'; 
 import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,6 +18,7 @@ import { CellComponent } from './level3/cell/cell.component';
 import { Level1Part1Component } from './level1-part1/level1-part1.component';
 import { Level1Part2Component } from './level1-part2/level1-part2.component';
 import { Level2Part1Component } from './level2-part1/level2-part1.component';
+import { ResultsComponent } from './results/results.component';
 
 
 @NgModule({
@@ -31,6 +33,7 @@ import { Level2Part1Component } from './level2-part1/level2-part1.component';
     Level1Part1Component,
     Level1Part2Component,
     Level2Part1Component,
+    ResultsComponent,
     
     
    
@@ -39,6 +42,8 @@ import { Level2Part1Component } from './level2-part1/level2-part1.component';
     BrowserModule,
     AppRoutingModule,
     MatSnackBarModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     FormsModule, MatFormFieldModule, MatInputModule, MatSliderModule
   ],

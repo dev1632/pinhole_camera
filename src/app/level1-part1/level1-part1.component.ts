@@ -15,6 +15,11 @@ export class Level1Part1Component {
   title = 'Box-pinhole-game';
   username: string = '';
   Que: boolean = true;
+  level1part1Attempts: number;
+  level1part1time:number;
+  level1Attempts: number=0;
+  level1time: number=0;
+  timecounter: number;
   
   
 
@@ -71,6 +76,9 @@ export class Level1Part1Component {
       this.objSlideDistance=220;
       this.appertureWidth=.25;
       this.Qcount =1;
+      this.timecounter=0;
+      this.level1part1Attempts = 0;
+      this.level1part1time = 0;
       this.attempts = 0;
       this.value1 = this.getRN();
       this.hi=this.getRN();
@@ -128,10 +136,10 @@ export class Level1Part1Component {
           this.ans = this.calculateD2();
         
 
-        this.text9 = new fabric.Text('Ans - '+ this.ans +' cm ', {fontSize: 15,
-          left: 350,
-          top: 320,selectable:!1,hasControls:!1});
-          this.canvas.add(this.text9);
+        // this.text9 = new fabric.Text('Ans - '+ this.ans +' cm ', {fontSize: 15,
+        //   left: 350,
+        //   top: 320,selectable:!1,hasControls:!1});
+        //   this.canvas.add(this.text9);
 
 
         // this.pinhole = new fabric.Circle({radius: 6,fill:'black',stroke:'black',strokeWidth:3,originX:'center',originY:'center'});
@@ -251,6 +259,8 @@ export class Level1Part1Component {
 
   this.route.queryParams.subscribe(params => {
     this.username = params['username'];
+    this.level1Attempts = +params['level1Attempts'] || 0;
+      this.level1time = +params['level1time'] || 0;
   });
 
   if (!localStorage.getItem('foo')) { 
@@ -294,6 +304,7 @@ export class Level1Part1Component {
 
           if(this.ms ===100){
             this.sec++;
+            this.timecounter++;
             this.sec = this.sec < 10 ? '0' + this.sec : this.sec;
             this.ms = '0' +0;
           }
@@ -355,6 +366,8 @@ export class Level1Part1Component {
     this.canvas.remove(this.text2,this.text3);
     this.openSnackBar("Your Answer is ","Correct");
     this.flag=1;
+    this.level1part1Attempts = this.attempts;
+      this.level1part1Attempts =this.timecounter;
     
 
         
@@ -498,7 +511,12 @@ export class Level1Part1Component {
     }
     next(){
 
-        this.router.navigate(['/level1/level2'], { queryParams: { username: this.username }});
+        this.router.navigate(['/level1/level2'], { queryParams: { username: this.username,
+          level1Attempts: this.level1Attempts,
+          level1time: this.level1time,
+          level1part1Attempts: this.level1part1Attempts,
+          level1part1time: this.level1part1time
+        }});
       
   
     }

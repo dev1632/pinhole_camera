@@ -16,6 +16,9 @@ export class Level1Component implements OnInit{
   title = 'Box-pinhole-game';
   username: string = '';
   Que: boolean = true;
+  level1Attempts: number;
+  level1time: number;
+  timecounter: number;
   
 
     ms: any ='0'+ 0;
@@ -71,6 +74,9 @@ export class Level1Component implements OnInit{
       this.objSlideDistance=220;
       this.appertureWidth=.25;
       this.attempts = 0;
+      this.timecounter = 0;
+      this.level1Attempts = 0;
+      this.level1time = 0;
       this.value2 = this.getRN();
       this.hi=this.getRN();
       this.ho = this.getRN();
@@ -125,10 +131,10 @@ export class Level1Component implements OnInit{
           this.ans = this.calculateD1();
         
 
-        this.text9 = new fabric.Text('Ans - '+ this.ans +' cm ', {fontSize: 15,
-          left: 350,
-          top: 320,selectable:!1,hasControls:!1});
-          this.canvas.add(this.text9);
+        // this.text9 = new fabric.Text('Ans - '+ this.ans +' cm ', {fontSize: 15,
+        //   left: 350,
+        //   top: 320,selectable:!1,hasControls:!1});
+        //   this.canvas.add(this.text9);
 
 
         // this.pinhole = new fabric.Circle({radius: 6,fill:'black',stroke:'black',strokeWidth:3,originX:'center',originY:'center'});
@@ -307,6 +313,7 @@ export class Level1Component implements OnInit{
 
           if(this.ms ===100){
             this.sec++;
+            this.timecounter++;
             this.sec = this.sec < 10 ? '0' + this.sec : this.sec;
             this.ms = '0' +0;
           }
@@ -378,6 +385,8 @@ export class Level1Component implements OnInit{
       this.canvas.remove(this.text2,this.text3);
       this.openSnackBar("Your Answer is ","Correct");
       this.flag=1;
+      this.level1Attempts = this.attempts;
+      this.level1time =this.timecounter;
       
   
           
@@ -524,7 +533,10 @@ export class Level1Component implements OnInit{
     next(){
 
     
-        this.router.navigate(['/level1-part1'], { queryParams: { username: this.username }});
+        this.router.navigate(['/level1-part1'], { queryParams: { username: this.username,
+          level1Attempts: this.level1Attempts,
+          level1time: this.level1time
+         }});
       
       
       
