@@ -246,6 +246,21 @@ export class Level2Component implements OnInit{
     this.canvas.add(img);
   });
 
+  // idhar select image karke right answer pe image dikhani hai !! 
+
+  const imageUrl = '../assets/Logo/Arrow_A-removebg-preview.png';
+  fabric.Image.fromURL(imageUrl, (img) => {
+    img.set({
+      left: 148,
+      top: 160,
+      selectable:!1,hasControls:!1,
+      scaleX: 0.165, 
+      scaleY: 0.165
+    });
+    this.canvas.add(img);
+  });
+
+
   this.route.queryParams.subscribe(params => {
     this.username = params['username'];
     this.level1Attempts = +params['level1Attempts'];

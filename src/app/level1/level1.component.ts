@@ -240,10 +240,26 @@ export class Level1Component implements OnInit{
       // this.canvas.add(this.arrow);
   
       const imageUrl = '../assets/Logo/arrow.png';
+      const imageUrl1 = '../assets/Logo/arrow1.png';
+  
   
   fabric.Image.fromURL(imageUrl, (img) => {
     img.set({
       left: 595,
+      top: 170,
+      selectable:!1,hasControls:!1,
+      scaleX: 0.045, 
+      scaleY: 0.045
+    });
+    this.canvas.add(img);
+  });
+
+
+  //idhar woh onclick wala function daalna hai and right answer pe dikhani hai
+
+  fabric.Image.fromURL(imageUrl1, (img) => {
+    img.set({
+      left: 157,
       top: 170,
       selectable:!1,hasControls:!1,
       scaleX: 0.045, 
