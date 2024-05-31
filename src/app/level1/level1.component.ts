@@ -16,8 +16,8 @@ export class Level1Component implements OnInit{
   title = 'Box-pinhole-game';
   username: string = '';
   Que: boolean = true;
-  level1Attempts: number;
-  level1time: number;
+  level1Attempts: number=0;
+  level1time: number=0;
   timecounter: number;
   
 
@@ -75,8 +75,6 @@ export class Level1Component implements OnInit{
       this.appertureWidth=.25;
       this.attempts = 0;
       this.timecounter = 0;
-      this.level1Attempts = 0;
-      this.level1time = 0;
       this.value2 = this.getRN();
       this.hi=this.getRN();
       this.ho = this.getRN();
@@ -248,8 +246,8 @@ export class Level1Component implements OnInit{
       left: 595,
       top: 170,
       selectable:!1,hasControls:!1,
-      scaleX: 0.045, 
-      scaleY: 0.045
+      scaleX: 0.045*this.ho, 
+      scaleY: 0.045*this.ho
     });
     this.canvas.add(img);
   });
@@ -403,6 +401,8 @@ export class Level1Component implements OnInit{
       this.flag=1;
       this.level1Attempts = this.attempts;
       this.level1time =this.timecounter;
+      console.log(this.level1Attempts);
+            console.log(this.level1time);
       
   
           

@@ -15,6 +15,7 @@ export class AiBoardComponent implements OnInit {
   gameOver: boolean = false;
   board: Piece[][] = [];
   pinhole_screen: any;
+  attempts: number=0;
   board2: Piece[][] = [];
   board3: Piece[][] = [];
   statusMessage: string = '';
@@ -40,6 +41,7 @@ export class AiBoardComponent implements OnInit {
     this.currentPlayer = Piece.X;
     this.Gamestarted = true;
     this.gameOver = false;
+    this.attempts++;
     this.board = [
       [Piece.EMPTY, Piece.EMPTY, Piece.EMPTY],
       [Piece.EMPTY, Piece.EMPTY, Piece.EMPTY],

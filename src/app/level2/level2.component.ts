@@ -31,9 +31,9 @@ export class Level2Component implements OnInit{
     ans: any;
     flag: number=0;
     optionsForm: FormGroup;
-    level2Attempts: number;
+    level2Attempts: number =0;
     timecounter: number;
-    level2time: number;
+    level2time: number =0;
     level1part1Attempts: number =0;
     level1part1time:number =0;
     level1Attempts: number=0;
@@ -86,8 +86,6 @@ export class Level2Component implements OnInit{
       this.Qcount =1;
       this.img_ans="0";
       this.attempts = 0;
-      this.level2Attempts =0;
-      this.level2time =0;
       this.timecounter=0;
       this.start(); //starts timer
       this.optionsForm = this.fb.group({
@@ -263,8 +261,8 @@ export class Level2Component implements OnInit{
 
   this.route.queryParams.subscribe(params => {
     this.username = params['username'];
-    this.level1Attempts = +params['level1Attempts'];
-      this.level1time = +params['level1time'];
+    this.level1Attempts = params['level1Attempts'];
+      this.level1time = params['level1time'];
       this.level1part1Attempts = +params['level1part1Attempts'];
       this.level1part1time = +params['level1part1time'];
   });
@@ -356,6 +354,7 @@ export class Level2Component implements OnInit{
           if(this.ms ===100){
             this.sec++;
             this.timecounter++;
+           
             this.sec = this.sec < 10 ? '0' + this.sec : this.sec;
             this.ms = '0' +0;
           }

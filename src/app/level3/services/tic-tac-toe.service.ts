@@ -75,6 +75,7 @@ export class TicTacToeService {
     // horizontal
     for (const col of state) {
       if (col[0] == col[1] && col[0] == col[2] && col[0] != Piece.EMPTY) {
+        
         return true;
       }
     }
